@@ -1,0 +1,64 @@
+if(!function_exists('mblooddonationlist')){
+    function mblooddonationlist($atts = array(), $content=null){
+        $content = "ami to valo na valo loi thako or aso blood dite ";
+       return $content;
+    }
+}
+
+if(!shortcode_exists('mbinfolist')){
+    add_shortcode('mbinfolist','mblooddonationlist');
+} 
+
+
+
+<?php
+
+/*
+
+* Plugin Name: Blood Donation
+* Plugin URI: 
+* Description: Simple Bood Donation System
+* Version: 1.0.0
+* Requires at least: 5.2
+* Requires PHP: 7.2
+* Author: Hadi Jaman
+* Author URI: https://www.facebook.com/hadijaman 
+
+
+
+*/
+
+
+if(!function_exists('mblooddonationlist')){
+    function mblooddonationlist($atts = array(), $content=null,$tag=''){
+
+
+       $attlist= array_change_key_case((array) $atts,CASE_LOWER);
+        
+       $getallatt= shortcode_atts(
+                array(
+                    'class' => "hadijaman",
+                    'id'  =>"badboy",
+
+                ),$attlist,$tag
+
+        );
+        $selfcontent='<div id='.esc_html($getallatt['id']).' class='.esc_html($getallatt['class']).'>';
+        $selfcontent.=apply_filters('the_content',$content);
+        $selfcontent.="</div>";
+
+       return $selfcontent;
+    }
+}
+
+if(!shortcode_exists('mbinfolist')){
+    add_shortcode('mbinfolist','mblooddonationlist');
+} 
+
+
+
+
+
+
+?>
+
